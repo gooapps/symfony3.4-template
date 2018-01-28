@@ -26,5 +26,13 @@ parameters:
     mailer_host: smtp.xxxx.com
     mailer_user: admin@xxx.com
     mailer_password: xxxx
+    contactMail: info@gooapps.net
+    supportMail: devel@gooapps.net
 
     projectname: ViewApp
+
+    disable_delivery: true
+    handle404: true # default :  false
+    handlePHPErrors: true # catch fatal erros and email them
+    handlePHPWarnings: false # catch warnings and email them
+    handleSilentErrors: false # don't catch error on method with an @

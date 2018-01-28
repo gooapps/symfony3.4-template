@@ -37,5 +37,9 @@ monolog:
         #    type: chromephp
         #    level: info
 
-#swiftmailer:
-#    delivery_addresses: ['me@example.com']
+swiftmailer:
+    default_mailer: instant
+    mailers:
+        instant:
+            disable_delivery:  false
+            delivery_address: %contactmail%
