@@ -149,11 +149,11 @@ sonata_user:
 class:            # Entity Classes
 user:               Application\Sonata\UserBundle\Entity\User
 group:              Application\Sonata\UserBundle\Entity\Group
-admin:            # Admin Classes
-user:
-class:    Application\Sonata\UserBundle\Admin\Model\UserAdmin
-group:
-class:    Application\Sonata\UserBundle\Admin\Model\GroupAdmin
+#admin:            # Admin Classes
+#user:
+#class:    Application\Sonata\UserBundle\Admin\Model\UserAdmin
+#group:
+#class:    Application\Sonata\UserBundle\Admin\Model\GroupAdmin
 
 
 fos_user:
@@ -171,4 +171,3 @@ group_manager: sonata.user.orm.group_manager                    # If you're usin
 
 service:
 user_manager: sonata.user.orm.user_manager                                 # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
-
