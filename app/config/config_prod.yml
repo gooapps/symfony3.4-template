@@ -21,14 +21,14 @@ monolog:
             type: console
             process_psr_3_messages: false
 
-#Elao ErrorNotifier Bundle
-elao_error_notifier:
-    from: %mailer_user%
-    to: %supportMail%
-    handle404: %handle404%
-    handleHTTPcodes: ~
-    mailer: mailer
-    handlePHPErrors: %handlePHPErrors%
-    handlePHPWarnings: %handlePHPWarnings%
-    handleSilentErrors: %handleSilentErrors%
-    ignoredClasses: ~   
+##Elao ErrorNotifier Bundle
+#elao_error_notifier:
+#    from: %mailer_user%
+#    to: %supportMail%
+#    handle404: %handle404%
+#    handleHTTPcodes: ~
+#    mailer: mailer
+#    handlePHPErrors: %handlePHPErrors%
+#    handlePHPWarnings: %handlePHPWarnings%
+#    handleSilentErrors: %handleSilentErrors%
+#    ignoredClasses: ~
