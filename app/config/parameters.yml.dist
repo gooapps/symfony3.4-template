@@ -36,3 +36,8 @@ parameters:
     handlePHPErrors: true # catch fatal erros and email them
     handlePHPWarnings: false # catch warnings and email them
     handleSilentErrors: false # don't catch error on method with an @
+
+    jwt_private_key_path: '%kernel.root_dir%/config/jwt/private.pem'
+    jwt_public_key_path: '%kernel.root_dir%/config/jwt/public.pem'
+    jwt_key_pass_phrase: abeona
+    jwt_token_ttl: 14400
