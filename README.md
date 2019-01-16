@@ -14,6 +14,7 @@ git checkout reactsymfony
 * [PHP - Apache - Mysql](http://www.wampserver.com/en/)
 * [Composer](https://getcomposer.org/)
 * [Yarn](https://yarnpkg.com/lang/en/) 
+* Base de datos ya creada, con nombre reactsymfony, o dar otra base de datos
 
 ## Symfony 
 
