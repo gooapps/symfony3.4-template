@@ -44,7 +44,7 @@ twig:
         interval_format: '%%d days'
     form_themes:
             - 'SonataCoreBundle:Form:datepicker.html.twig'
-            - 'ApplicationSonataMediaBundle:Form:media_widgets.html.twig'
+            #- 'ApplicationSonataMediaBundle:Form:media_widgets.html.twig'
 
 # Doctrine Configuration
 doctrine:
