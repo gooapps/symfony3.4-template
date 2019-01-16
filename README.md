@@ -3,7 +3,7 @@
 Plantilla con configuración de symfony 3.4 + Reactjs
 
 ```
-git clone URI
+git clone https://github.com/gooapps/symfony3.4-template.git
 cd reactsymfony
 ```
 
