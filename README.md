@@ -15,6 +15,7 @@ git checkout reactsymfony
 * [Composer](https://getcomposer.org/)
 * [Yarn](https://yarnpkg.com/lang/en/) 
 * Base de datos ya creada, con nombre reactsymfony, o dar otra base de datos
+* Wampp/Xampp funcionando
 
 ## Symfony 
 
