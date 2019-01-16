@@ -68,3 +68,5 @@ Una vez realizado ejecutamos la aplicación de nuevo con
 ```
 php bin/console server:run
 ```
+
+Accedemos a http://localhost:8000/admin
