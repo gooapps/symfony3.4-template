@@ -54,3 +54,16 @@ Nos vamos a http://localhost:8000 y accedemos a la página por defecto con nuest
 
 Los ficheros fuente de React se encuentran en la carpeta **assets/js** , el componente base se inyecta en la aplicación en la plantilla **index.html.twig** el **div con id="root"**, y los js compilados se introduce su dirección en la plantilla **base.html.twig**
 
+## Acceder a Panel de Administración
+Para acceder al panel de administración debemos primero actualizar el esquema de nuestra base de datos, y después crear un usuario con privilegios.
+
+```
+php bin/console doctrine:schema:update --force
+php bin/console fos:user:promote copese@gooapps.net --super
+php bin/console fos:user:create copese@gooapps.net devel@gooapps.net GooApps2019
+```
+
+Una vez realizado ejecutamos la aplicación de nuevo con 
+```
+php bin/console server:run
+```
