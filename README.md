@@ -59,8 +59,9 @@ Para acceder al panel de administración debemos primero actualizar el esquema d
 
 ```
 php bin/console doctrine:schema:update --force
-php bin/console fos:user:promote copese@gooapps.net --super
-php bin/console fos:user:create copese@gooapps.net devel@gooapps.net GooApps2019
+php bin/console fos:user:create develgooapps@gooapps.net devel@gooapps.net GooApps2019
+php bin/console fos:user:promote develgooapps@gooapps.net --super
+
 ```
 
 Una vez realizado ejecutamos la aplicación de nuevo con 
