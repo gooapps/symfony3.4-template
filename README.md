@@ -62,7 +62,7 @@ php bin/console doctrine:schema:update --force
 php bin/console fos:user:create develgooapps@gooapps.net devel@gooapps.net GooApps2019
 php bin/console fos:user:promote develgooapps@gooapps.net --super
 
-```
+``` 
 
 Una vez realizado ejecutamos la aplicación de nuevo con 
 ```
