@@ -4,7 +4,8 @@ Plantilla con configuración de symfony 3.4 + Reactjs
 
 ```
 git clone https://github.com/gooapps/symfony3.4-template.git
-cd reactsymfony
+cd cd symfony3.4-template\
+git checkout reactsymfony
 ```
 
 ## Prerequisitos
@@ -13,6 +14,7 @@ cd reactsymfony
 * [PHP - Apache - Mysql](http://www.wampserver.com/en/)
 * [Composer](https://getcomposer.org/)
 * [Yarn](https://yarnpkg.com/lang/en/) 
+* Base de datos ya creada, con nombre reactsymfony, o dar otra base de datos
 
 ## Symfony 
 
@@ -52,3 +54,19 @@ Nos vamos a http://localhost:8000 y accedemos a la página por defecto con nuest
 
 Los ficheros fuente de React se encuentran en la carpeta **assets/js** , el componente base se inyecta en la aplicación en la plantilla **index.html.twig** el **div con id="root"**, y los js compilados se introduce su dirección en la plantilla **base.html.twig**
 
+## Acceder a Panel de Administración
+Para acceder al panel de administración debemos primero actualizar el esquema de nuestra base de datos, y después crear un usuario con privilegios.
+
+```
+php bin/console doctrine:schema:update --force
+php bin/console fos:user:create develgooapps@gooapps.net devel@gooapps.net GooApps2019
+php bin/console fos:user:promote develgooapps@gooapps.net --super
+
+``` 
+
+Una vez realizado ejecutamos la aplicación de nuevo con 
+```
+php bin/console server:run
+```
+
+Accedemos a http://localhost:8000/admin
