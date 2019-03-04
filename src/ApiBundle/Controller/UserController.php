@@ -349,6 +349,69 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @Route("/update-avatar",methods={"POST"})
+     * @SWG\Response(
+     *     response=200,
+     *     description="Add Avatar to profile"
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="Not Found"
+     * )
+     * @SWG\Parameter(
+     *     in="body",
+     *     name="image",
+     *     description="Photo",
+     *     required=true,
+     *     @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="image", type="string")
+     *          )
+     *   )
+     * @SWG\Tag(name="User")
+     * @Security(name="Bearer")
+     */
+    public function updateAvatarAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($this->getUser()->getId());
+
+        $image = $request->get('image');
+        if (!is_null($image)) {
+
+            $data = base64_decode($image);
+            $file = $this->getParameter('files_temp_dir') . uniqid() . '.png';
+            $actual = file_put_contents($file, $data);
+
+
+            $media = new Media();
+            $media->setBinaryContent($file);
+            $media->setContext('s3');
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setEnabled(true);
+            $em->persist($media);
+            $em->flush();
+
+            //Borramos el archivo temporal
+            unlink($file);
+
+            $user->setAvatar($media);
+            $em->persist($user);
+            $em->flush();
+
+
+            $view = $this->view(['message' => "Avatar actualizada correctamente"], Response::HTTP_OK);
+            return $this->handleView($view);
+        }
+
+        $view = $this->view(["error" => "no hay imagen"], Response::HTTP_OK);
+        return $this->handleView($view);
+    }
+
+
+    /**
      * Generate a random string, using a cryptographically secure
      * pseudorandom number generator (random_int)
      *

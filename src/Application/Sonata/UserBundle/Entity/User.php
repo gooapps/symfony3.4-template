@@ -19,6 +19,13 @@ class User extends BaseUser
      */
     protected $id;
 
+    protected $avatar;
+
+    /**
+     * @var string $firebaseToken
+     */
+    protected $firebaseToken;
+
     /**
      * Get id.
      *
@@ -27,5 +34,21 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirebaseToken()
+    {
+        return $this->firebaseToken;
+    }
+
+    /**
+     * @param mixed $firebaseToken
+     */
+    public function setFirebaseToken($firebaseToken)
+    {
+        $this->firebaseToken = $firebaseToken;
     }
 }

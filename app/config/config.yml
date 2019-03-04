@@ -231,8 +231,8 @@ nelmio_api_doc:
     models: { use_jms: true }
     documentation:
         info:
-            title: Softcongress Documentation
-            description: Documentation for Softcongress API
+            title: Softcongres Documentation
+            description: Documentation for Softcongres API
             version: 1.1.0
         securityDefinitions:
             Bearer:

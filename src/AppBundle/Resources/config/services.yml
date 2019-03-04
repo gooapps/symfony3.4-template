@@ -1,8 +1,8 @@
 services:
-#  email.services:
-#    class: AppBundle\Services\EmailService
-#    arguments: ["@swiftmailer.mailer","@templating","%contactMail%","%projectName%", "%copese_send_email%","@service_container"]
-#
+  email.services:
+    class: AppBundle\Services\EmailService
+    arguments: ["@swiftmailer.mailer","@templating","%contactMail%","%projectName%", "%copese_send_email%","@service_container"]
+
   notification_push.services:
     class: AppBundle\Services\NotificationsPushService
     arguments: ["%firebase_token%", "@doctrine.orm.entity_manager"]
