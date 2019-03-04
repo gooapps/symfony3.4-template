@@ -1,0 +1,20 @@
+user_api:
+    type: annotation
+    resource: "@ApiBundle/Controller/UserController.php"
+    prefix: /user
+
+util_api:
+    type: annotation
+    resource: "@ApiBundle/Controller/UtilsController.php"
+    prefix: /util
+
+media_api:
+    type: annotation
+    resource: "@ApiBundle/Controller/MediaController.php"
+    prefix: /media
+
+notifications_api:
+    type: annotation
+    resource: "@ApiBundle/Controller/NotificationController.php"
+    prefix: /notifications
+

@@ -1,3 +1,10 @@
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /admin
+        permanent: true
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
@@ -26,3 +33,15 @@ sonata_user_admin_security:
 sonata_user_admin_resetting:
     resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
     prefix: /admin/resetting
+
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    prefix: /api
+
+app.swagger_ui:
+    path: /api/doc
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.swagger:
+    path: /api/doc.json
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
