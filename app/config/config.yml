@@ -45,7 +45,7 @@ twig:
         interval_format: '%%d days'
     form_themes:
             - 'SonataCoreBundle:Form:datepicker.html.twig'
-            - 'ApplicationSonataMediaBundle:Form:media_widgets.html.twig'
+#            - 'ApplicationSonataMediaBundle:Form:media_widgets.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -280,15 +280,6 @@ sonata_admin:
                 items:
                     - sonata.media.admin.media
                     - sonata.media.admin.gallery
-            sonata.admin.group.classification:
-                roles:                 [ROLE_SUPER_ADMIN]
-                label:                Clasificación
-                icon:                 '<i class="fa fa-tags"></i>'
-                items:
-                    - sonata.classification.admin.category
-                    - sonata.classification.admin.tag
-                    - sonata.classification.admin.collection
-                    - sonata.classification.admin.context
         blocks:
             -
                 position: top

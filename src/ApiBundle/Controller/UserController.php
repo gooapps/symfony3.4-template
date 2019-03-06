@@ -15,7 +15,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 
 class UserController extends FOSRestController
 {
-    /** Get Profile info of the active user
+    /** Get profile info of the active User.
      *
      * @Route("/profile",methods={"GET"})
      * @SWG\Response(
@@ -127,7 +127,7 @@ class UserController extends FOSRestController
         return $this->handleView($view);
     }
 
-    /** Logs in the user and returns token.
+    /** Logs in the User and returns token.
      *
      * @Route("/login",methods={"POST"})
      * @SWG\Response(
@@ -183,7 +183,8 @@ class UserController extends FOSRestController
         return $this->handleView($view);
     }
 
-    /**
+    /** Registers Firebase token on first User login in app.
+     *
      * @Route("/register-token",methods={"POST"})
      * @SWG\Response(
      *     response=200,
@@ -224,7 +225,7 @@ class UserController extends FOSRestController
         return $this->handleView($view);
     }
 
-    /** Change password
+    /** Change password.
      *
      * @Route("/change-password",methods={"POST"})
      * @SWG\Response(
@@ -296,7 +297,7 @@ class UserController extends FOSRestController
 
     }
 
-    /** Recover password
+    /** Recover password.
      *
      * @Route("/recovery-password",methods={"POST"})
      * @SWG\Response(
@@ -348,7 +349,8 @@ class UserController extends FOSRestController
 
     }
 
-    /**
+    /** Upload/updates avatar picture of active User.
+     *
      * @Route("/update-avatar",methods={"POST"})
      * @SWG\Response(
      *     response=200,

@@ -1,7 +1,7 @@
 services:
   email.services:
     class: AppBundle\Services\EmailService
-    arguments: ["@swiftmailer.mailer","@templating","%contactMail%","%projectName%", "%copese_send_email%","@service_container"]
+    arguments: ["@swiftmailer.mailer","@templating","%contactMail%","%projectName%", "@service_container"]
 
   notification_push.services:
     class: AppBundle\Services\NotificationsPushService
