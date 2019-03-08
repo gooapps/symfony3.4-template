@@ -6,3 +6,10 @@ services:
   notification_push.services:
     class: AppBundle\Services\NotificationsPushService
     arguments: ["%firebase_token%", "@doctrine.orm.entity_manager"]
+
+  app.admin.event:
+      class: AppBundle\Admin\EventAdmin
+      arguments: [~, AppBundle\Entity\Event, Sonata\AdminBundle\Controller\CRUDController]
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: admin, label: Event }
+      public: true

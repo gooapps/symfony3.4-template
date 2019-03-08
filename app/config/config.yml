@@ -272,6 +272,15 @@ sonata_admin:
                 items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
+
+            event:
+                roles: [ROLE_SUPER_ADMIN]
+                label: Eventos
+                icon: '<i class="fa fa-id-badge"></i>'
+                on_top: true
+                items:
+                  - app.admin.event
+
             sonata.admin.group.media:
                 roles:                 [ROLE_SUPER_ADMIN]
                 label:                sonata_media
@@ -280,6 +289,16 @@ sonata_admin:
                 items:
                     - sonata.media.admin.media
                     - sonata.media.admin.gallery
+
+#            sonata.admin.group.classification:
+#                roles:                 [ROLE_SUPER_ADMIN]
+#                label:                Clasificación
+#                icon:                 '<i class="fa fa-tags"></i>'
+#                items:
+#                    - sonata.classification.admin.category
+#                    - sonata.classification.admin.tag
+#                    - sonata.classification.admin.collection
+#                    - sonata.classification.admin.context
         blocks:
             -
                 position: top
