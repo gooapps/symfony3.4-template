@@ -147,7 +147,7 @@ class MediaController extends FOSRestController {
             return $this->handleView($view);
         }
 
-        $view = $this->view(["error" => "no hay fichero"], Response::HTTP_OK);
+        $view = $this->view(["error" => "No se han subido ficheros"], Response::HTTP_OK);
         return $this->handleView($view);
     }
 
