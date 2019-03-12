@@ -93,7 +93,7 @@ class MediaController extends FOSRestController {
      * @Route("/upload-media",methods={"POST"})
      * @SWG\Response(
      *     response=200,
-     *     description="Add Photo"
+     *     description="Add File"
      * )
      * @SWG\Response(
      *     response=404,
@@ -102,7 +102,7 @@ class MediaController extends FOSRestController {
      * @SWG\Parameter(
      *     in="body",
      *     name="image",
-     *     description="Photo",
+     *     description="File",
      *     required=true,
      *     @SWG\Schema(
      *              type="object",
