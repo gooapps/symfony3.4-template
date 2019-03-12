@@ -4,19 +4,19 @@ homepage:
     defaults:
         path: /admin
         permanent: true
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
     
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
+    prefix: /
 
 _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
     
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'

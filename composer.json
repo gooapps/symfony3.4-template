@@ -25,6 +25,7 @@
         "friendsofsymfony/user-bundle": "~2.0",
         "gedmo/doctrine-extensions": "^2.4",
         "incenteev/composer-parameter-handler": "^2.0",
+        "kreait/firebase-php": "^4.19",
         "lexik/jwt-authentication-bundle": "^2.6",
         "nelmio/api-doc-bundle": "^3.1",
         "nelmio/cors-bundle": "^1.5",

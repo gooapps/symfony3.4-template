@@ -31,10 +31,9 @@ class NotificationController extends FOSRestController {
      *       required=true,
      *       @SWG\Schema(
      *              type="object",
-     *              @SWG\Property(property="id", type="string"),
+     *              @SWG\Property(property="idUser", type="string"),
      *              @SWG\Property(property="title", type="string"),
-     *              @SWG\Property(property="message", type="string"),
-     *              @SWG\Property(property="type", type="string")
+     *              @SWG\Property(property="message", type="string")
      *          )
      *     )
      * @SWG\Tag(name="Notifications")
@@ -42,10 +41,9 @@ class NotificationController extends FOSRestController {
      */
 
     public function sendMessageAction (Request $request){
-        $id = $request->get('id');
+        $id = $request->get('idUser');
         $title = $request->get('title');
         $message = $request->get('message');
-        $type = $request->get('type');
 
         if(!$id)
         {
@@ -59,7 +57,7 @@ class NotificationController extends FOSRestController {
             throw $this->createNotFoundException();
         }
         $notificationService = $this->get('notification_push.services');
-        $notificationService->sendNotification($id,$title, $message, $type,[]);
+        $notificationService->sendNotification($id,$title, $message,[]);
 
         $view = $this->view(['message' => 'Notificacion enviada'], Response::HTTP_OK);
         return $this->handleView($view);

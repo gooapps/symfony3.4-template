@@ -4,8 +4,8 @@ services:
     arguments: ["@swiftmailer.mailer","@templating","%contactMail%","%projectName%", "@service_container"]
 
   notification_push.services:
-    class: AppBundle\Services\NotificationsPushService
-    arguments: ["%firebase_token%", "@doctrine.orm.entity_manager"]
+    class: AppBundle\Services\FirebaseService
+    arguments: [ "@doctrine.orm.entity_manager"]
 
   app.admin.event:
       class: AppBundle\Admin\EventAdmin
