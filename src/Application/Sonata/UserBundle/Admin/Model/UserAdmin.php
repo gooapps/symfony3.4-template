@@ -90,12 +90,6 @@ class UserAdmin extends AbstractAdmin
             ->add('enabled', null, ['editable' => true])
             ->add('createdAt')
         ;
-
-        if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
-            $listMapper
-                ->add('impersonating', 'string', ['template' => '@SonataUser/Admin/Field/impersonating.html.twig'])
-            ;
-        }
     }
 
     /**
@@ -104,7 +98,6 @@ class UserAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filterMapper): void
     {
         $filterMapper
-            ->add('id')
             ->add('username')
             ->add('email')
             ->add('groups')
@@ -145,7 +138,6 @@ class UserAdmin extends AbstractAdmin
             ->tab('Security')
             ->with('Status', ['class' => 'col-md-6'])->end()
             ->with('Groups', ['class' => 'col-md-6'])->end()
-            ->with('Roles', ['class' => 'col-md-12'])->end()
             ->end()
         ;
 
@@ -185,14 +177,6 @@ class UserAdmin extends AbstractAdmin
                 'required' => false,
                 'expanded' => true,
                 'multiple' => true,
-            ])
-            ->end()
-            ->with('Roles')
-            ->add('realRoles', SecurityRolesType::class, [
-                'label' => 'form.label_roles',
-                'expanded' => true,
-                'multiple' => true,
-                'required' => false,
             ])
             ->end()
             ->end()
