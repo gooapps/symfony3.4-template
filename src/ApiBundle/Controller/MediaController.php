@@ -38,7 +38,7 @@ class MediaController extends FOSRestController {
      * @SWG\Tag(name="Media")
      * @Security(name="Bearer")
      */
-    public function addMediaAction(Request $request)
+    public function addImageAction(Request $request)
     {
 
         $em = $this->getDoctrine()->getEntityManager();
@@ -86,6 +86,68 @@ class MediaController extends FOSRestController {
         }
 
         $view = $this->view(["error" => "no hay imagen"], Response::HTTP_OK);
+        return $this->handleView($view);
+    }
+
+    /**
+     * @Route("/upload-media",methods={"POST"})
+     * @SWG\Response(
+     *     response=200,
+     *     description="Add Photo"
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="Not Found"
+     * )
+     * @SWG\Parameter(
+     *     in="body",
+     *     name="image",
+     *     description="Photo",
+     *     required=true,
+     *     @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="file", type="string")
+     *          )
+     *   )
+     * @SWG\Tag(name="Media")
+     * @Security(name="Bearer")
+     */
+    public function addFileAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $image = $request->get('file');
+        if (!is_null($image)) {
+
+            $data = base64_decode($image);
+            $file = $this->getParameter('files_temp_dir') . uniqid();
+            $actual = file_put_contents($file, $data);
+
+
+            $media = new Media();
+            $media->setBinaryContent($file);
+            $media->setContext('s3');
+            $media->setProviderName('sonata.media.provider.file');
+            $media->setEnabled(true);
+            $em->persist($media);
+            $em->flush();
+
+            $array = [];
+            $provider = $this->container->get($media->getProviderName());
+            $format = $provider->getFormatName($media, 'reference');
+            $urlReference = $provider->generatePublicUrl($media, $format);
+            $array['reference'] = $urlReference;
+            $array['id'] = $media->getId();
+
+            //Borramos el archivo temporal
+            unlink($file);
+
+            $view = $this->view($array, Response::HTTP_OK);
+            return $this->handleView($view);
+        }
+
+        $view = $this->view(["error" => "no hay fichero"], Response::HTTP_OK);
         return $this->handleView($view);
     }
 
