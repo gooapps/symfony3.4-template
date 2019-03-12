@@ -81,8 +81,7 @@ doctrine:
                     ApplicationSonataMediaBundle: ~
                     ApplicationSonataUserBundle: ~
                     ApplicationSonataClassificationBundle: ~
-                auto_mapping: true
-        
+
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -108,7 +107,6 @@ sonata_block:
         #sonata.admin_doctrine_orm.block.audit:
         #    contexts:   [admin]
 
-        sonata.block.service.text:
         sonata.block.service.rss:
         #...
         sonata.user.block.menu:    # used to display the menu in profile pages
@@ -129,37 +127,62 @@ sonata_block:
         
 sonata_media:
     # if you don't use default namespace configuration
-    #class:
-    #    media: MyVendor\MediaBundle\Entity\Media
-    #    gallery: MyVendor\MediaBundle\Entity\Gallery
-    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    class:
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
-    default_context: default # you need to set a context
+    default_context: s3 # you need to set a context
     contexts:
-        default:  # the default context is mandatory
+        s3:  # the default context is mandatory
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
                 - sonata.media.provider.image
                 - sonata.media.provider.file
-                - sonata.media.provider.vimeo
-
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
+                small: { width: 100 , quality: 90}
+                square: { width: 300 , height: 300, quality: 90}
+                medium: { width: 500 , quality: 90}
+                big:   { width: 1000 , quality: 90}
 
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: http://%amazon_s3_bucket%.s3.amazonaws.com # http://media.sonata-project.org/
 
     filesystem:
+        s3:
+            bucket: %amazon_s3_bucket%
+            accessKey: %amazon_s3_key%
+            secretKey: %amazon_s3_secret%
+            create: true
+            region: %amazon_s3_region%
+            storage: standard
+            acl: public
+            sdk_version: 3
+            #encryption:
+            cache_control: max-age=86400
         local:
             directory:  "%kernel.root_dir%/../web/uploads/media"
             create:     false
             
     providers:
         image:
-            resizer: sonata.media.resizer.square
+            service:    sonata.media.provider.image
+            resizer:    sonata.media.resizer.square # sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.s3
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['jpg', 'png', 'jpeg', 'gif']
+            allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png', 'image/gif']
+        file:
+            service:    sonata.media.provider.file
+            resizer:    false
+            filesystem: sonata.media.filesystem.s3
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['pdf','mp4','mov','avi','flv']
+            allowed_mime_types: ['application/pdf', 'application/x-pdf','video/mp4', 'video/x-flv','video/quicktime']
             
             
 sonata_user:
