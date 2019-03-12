@@ -10,6 +10,12 @@
             <generator strategy="AUTO" />
         </id>
 
+        <many-to-one field="avatar" target-entity="Application\Sonata\MediaBundle\Entity\Media">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-one>
+
     </entity>
 
 </doctrine-mapping>

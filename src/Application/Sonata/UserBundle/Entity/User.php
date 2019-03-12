@@ -70,4 +70,17 @@ class User extends BaseUser
     {
         $this->firebaseToken = $firebaseToken;
     }
+
+    public function setAvatar(\Application\Sonata\MediaBundle\Entity\Media $avatar)
+    {
+        $this->avatar = $avatar;
+        return $this;
+
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
+
+    }
 }
