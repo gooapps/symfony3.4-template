@@ -25,6 +25,13 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api:
+            pattern: /api(.*)
+            guard:
+                authenticators:
+                - jwt_token_authenticator
+            anonymous: true
+
         # -> custom firewall for the admin area of the URL
         admin:
             pattern:            /admin(.*)
@@ -65,7 +72,11 @@ security:
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/doc, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/user/recovery-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /api/doc, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /utils/get-version, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, role: [ROLE_USER] }
 
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.

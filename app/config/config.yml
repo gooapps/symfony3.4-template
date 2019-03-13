@@ -243,7 +243,8 @@ fos_rest:
         include_format:  false
     format_listener:
         rules:
-            - { path: ^/, priorities: [ json, jsonp, html, xml ], fallback_format: ~, prefer_extension: true }
+        - { path: ^/api, priorities: ['json', 'html', '*/*'], fallback_format: json, prefer_extension: true }
+        - { path: ^/, priorities: ['html', '*/*'], fallback_format: html, prefer_extension: true }
 
 stof_doctrine_extensions:
     orm:
@@ -254,8 +255,8 @@ nelmio_api_doc:
     models: { use_jms: true }
     documentation:
         info:
-            title: Softcongres Documentation
-            description: Documentation for Softcongres API
+            title: Example Documentation
+            description: Documentation for Example API
             version: 1.1.0
         securityDefinitions:
             Bearer:
