@@ -1,4 +1,5 @@
-Softcongres
+Symfony 3.4 Template
+
 =======
 
-A Symfony project created on January 28, 2018, 12:46 pm.
+Symfony template with Firebase Integration, Sonata FOS User Bundle & Sonata Media Bundle.
