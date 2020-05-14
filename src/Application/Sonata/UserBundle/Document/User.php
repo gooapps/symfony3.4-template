@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Sonata\UserBundle\Document;
+namespace App\Application\Sonata\UserBundle\Document;
 
 use Sonata\UserBundle\Document\BaseUser as BaseUser;
 

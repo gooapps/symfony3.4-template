@@ -1,4 +1,1 @@
-viewapp
-=======
-
-A Symfony project created on January 28, 2018, 12:46 pm.
+# Symfony 4.4 Template

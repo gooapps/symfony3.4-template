@@ -1,0 +1,23 @@
+sonata_classification:
+    class:
+        tag: App\Application\Sonata\ClassificationBundle\Entity\Tag
+        category: App\Application\Sonata\ClassificationBundle\Entity\Category
+        collection: App\Application\Sonata\ClassificationBundle\Entity\Collection
+        context: App\Application\Sonata\ClassificationBundle\Entity\Context
+    admin:
+        category:
+            class:        App\Application\Sonata\ClassificationBundle\Admin\CategoryAdmin
+            controller:   SonataClassificationBundle:CategoryAdmin
+            translation:  SonataClassificationBundle
+        collection:
+            class:        App\Application\Sonata\ClassificationBundle\Admin\CollectionAdmin
+            controller:   SonataAdminBundle:CRUD
+            translation:  SonataClassificationBundle
+#        context:
+#            class:        Sonata\ClassificationBundle\Admin\ContextAdmin
+#            controller:   SonataAdminBundle:CRUD
+#            translation:  SonataClassificationBundle
+#        tag:
+#            class:        Sonata\ClassificationBundle\Admin\TagAdmin
+#            controller:   SonataAdminBundle:CRUD
+#            translation:  SonataClassificationBundle

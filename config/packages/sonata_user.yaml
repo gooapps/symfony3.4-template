@@ -1,0 +1,14 @@
+sonata_user:
+#    mailer: custom.mailer.service.id
+    class:
+        user: App\Application\Sonata\UserBundle\Entity\User
+        group: App\Application\Sonata\UserBundle\Entity\Group
+    admin:                  # Admin Classes
+        user:
+            class:          App\Application\Sonata\UserBundle\Admin\UserAdmin
+            controller:     Sonata\AdminBundle\Controller\CRUDController
+            translation:    SonataUserBundle
+#        group:
+#            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+#            controller:     Sonata\AdminBundle\Controller\CRUDController
+#            translation:    SonataUserBundle
